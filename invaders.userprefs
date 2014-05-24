@@ -2,11 +2,14 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\player.cs">
     <Files>
-      <File FileName="Assets\scripts\player.cs" Line="19" Column="33" />
+      <File FileName="Assets\scripts\player.cs" Line="38" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Jeff\workspace\invaders\Assets\scripts\player.cs" line="25" />
+      <Breakpoint hitAction="PrintExpression" traceExpression="{transform.position}" file="C:\Users\Jeff\workspace\invaders\Assets\scripts\player.cs" line="29" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
