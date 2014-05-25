@@ -4,7 +4,10 @@ using System.Collections;
 public class player : MonoBehaviour
 {
 		public float speed;
+		public float shotSpeed;
 		public Camera camera;
+		public Transform gunTip;
+
 
 		private float playerSize;
 		private Vector3 screenWidthWorldPos;
@@ -14,7 +17,6 @@ public class player : MonoBehaviour
 		{
 				//actually half the size
 				playerSize = renderer.bounds.extents.x;
-				Debug.Log ("playerSize: " + playerSize);
 				
 	
 		}
@@ -22,8 +24,29 @@ public class player : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				float translation = Input.GetAxis ("Horizontal");
+				move ();
+				//fire ();
 
+		}
+		
+//		void fire ()
+//		{
+//				//Debug.Log (Input.GetButtonDown ("Fire1"));
+//				
+//				if (Input.GetButtonDown ("Fire1")) {
+//
+//						Transform shotSpawner = transform.GetComponentsInChildren<Transform> () [1];
+//						Debug.Log (shotSpawner.position);
+//						Rigidbody2D shotObj = Instantiate (shot, shotSpawner.position, Quaternion.identity) as Rigidbody2D;
+//						shotObj.velocity = new Vector2 (0, shotSpeed);
+//				}
+//
+//		}
+
+		void move ()
+		{
+				float translation = Input.GetAxis ("Horizontal");
+		
 				transform.Translate (new Vector3 (translation * speed, 0.0f, 0.0f));
 				//Debug.Log ("transPos: " + transform.position);
 				Vector3 maxX = transform.position + new Vector3 (playerSize, 0, 0);
@@ -40,7 +63,7 @@ public class player : MonoBehaviour
 						transform.position = new Vector3 (adjustMax, transform.position.y, transform.position.z);
 				} else if (viewPosMin.x == 0.0f) {
 						float adjustMin = Camera.main.ViewportToWorldPoint (viewPosMin).x + playerSize;
-				
+			
 						transform.position = new Vector3 (adjustMin, transform.position.y, transform.position.z);
 				}
 		}
