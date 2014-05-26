@@ -46,7 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\ColliderFoo.cs" />
      <Compile Include="Assets\scripts\GunTip.cs" />
+     <Compile Include="Assets\scripts\Shot.cs" />
      <Compile Include="Assets\scripts\camera.cs" />
      <Compile Include="Assets\scripts\player.cs" />
   </ItemGroup>

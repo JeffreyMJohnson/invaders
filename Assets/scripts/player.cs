@@ -4,13 +4,8 @@ using System.Collections;
 public class player : MonoBehaviour
 {
 		public float speed;
-		public float shotSpeed;
-		public Camera camera;
-		public Transform gunTip;
-
 
 		private float playerSize;
-		private Vector3 screenWidthWorldPos;
 
 		// Use this for initialization
 		void Start ()
@@ -25,23 +20,8 @@ public class player : MonoBehaviour
 		void Update ()
 		{
 				move ();
-				//fire ();
 
 		}
-		
-//		void fire ()
-//		{
-//				//Debug.Log (Input.GetButtonDown ("Fire1"));
-//				
-//				if (Input.GetButtonDown ("Fire1")) {
-//
-//						Transform shotSpawner = transform.GetComponentsInChildren<Transform> () [1];
-//						Debug.Log (shotSpawner.position);
-//						Rigidbody2D shotObj = Instantiate (shot, shotSpawner.position, Quaternion.identity) as Rigidbody2D;
-//						shotObj.velocity = new Vector2 (0, shotSpeed);
-//				}
-//
-//		}
 
 		void move ()
 		{
