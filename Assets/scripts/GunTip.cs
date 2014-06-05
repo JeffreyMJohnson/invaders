@@ -24,7 +24,7 @@ public class GunTip : MonoBehaviour
 		{
 				//Debug.Log (Input.GetButtonDown ("Fire1"));
 		
-				if (Input.GetButtonUp ("Fire1") && Time.time > nextFire) {
+				if (Input.GetButtonDown ("Fire1") && Time.time > nextFire) {
 						nextFire = Time.time + fireRate;
 						Instantiate (shotPrefab, transform.position, Quaternion.identity);
 				}

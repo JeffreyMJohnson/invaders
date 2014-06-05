@@ -7,6 +7,8 @@ public class camera : MonoBehaviour
 		public int livesLabelPaddingLeft;
 		public Font livesLabelFont;
 
+        public int scoreLabelPaddingLeft;
+
 		void OnGUI ()
 		{
 				GUI.contentColor = Color.green;
@@ -16,6 +18,11 @@ public class camera : MonoBehaviour
 				style.font = livesLabelFont;
 				style.normal.textColor = Color.green;
 				GUI.Label (new Rect (0, 0, 50, 50), "Lives:", style);
+
+                float scoreLabelX = Camera.main.ViewportToScreenPoint(new Vector3(1.0f, 0.0f, 0.0f)).x / 2;
+                //Debug.Log("scoreX?: " + scoreLabelX);
+                style.padding.left = scoreLabelPaddingLeft;
+                GUI.Label(new Rect(scoreLabelX, 0, 50, 50), "Score: ", style);
 		}
 
 		void Start ()
