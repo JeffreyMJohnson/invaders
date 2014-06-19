@@ -8,6 +8,8 @@ public class camera : MonoBehaviour
 		public Font livesLabelFont;
 
         public int scoreLabelPaddingLeft;
+        public int scorePadding;
+        private int score;
 
 		void OnGUI ()
 		{
@@ -23,10 +25,23 @@ public class camera : MonoBehaviour
                 //Debug.Log("scoreX?: " + scoreLabelX);
                 style.padding.left = scoreLabelPaddingLeft;
                 GUI.Label(new Rect(scoreLabelX, 0, 50, 50), "Score: ", style);
+                style.padding.left = scorePadding;
+                GUI.Label(new Rect(scoreLabelX + 50, 0, 50, 50), string.Format("{0, 4:0000}", score), style);
 		}
 
 		void Start ()
 		{
-			
+            score = 0;
 		}
+
+        public int getScore()
+        {
+            return score;
+        }
+
+        public void addToScore(int amountToAdd)
+        {
+            Debug.Log("addToScore");
+            score += amountToAdd;
+        }
 }

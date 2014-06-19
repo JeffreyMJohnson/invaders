@@ -17,7 +17,11 @@ public class GunTip : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				fire ();
+            GameObject shot = GameObject.FindWithTag("shot");
+            if (shot == null)
+            {
+                fire();
+            }
 		}
 
 		void fire ()

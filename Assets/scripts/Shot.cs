@@ -33,10 +33,9 @@ public class Shot : MonoBehaviour
 
 		void  OnTriggerEnter (Collider other)
 		{
-				Debug.Log ("trigger on shot");
-				if (other.tag == "enemy") {
-						Destroy (gameObject);
-				}
+			//Debug.Log ("trigger on shot");
+            Destroy (gameObject);  
+                
 				
 		}
 }

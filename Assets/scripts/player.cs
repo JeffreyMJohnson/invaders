@@ -47,4 +47,10 @@ public class player : MonoBehaviour
 						transform.position = new Vector3 (adjustMin, transform.position.y, transform.position.z);
 				}
 		}
+
+        void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("player shot");
+            GetComponent<Animator>().SetTrigger("playerDie");
+        }
 }

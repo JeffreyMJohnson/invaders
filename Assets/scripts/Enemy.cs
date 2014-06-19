@@ -1,43 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
-    private GameObject enemyController;
-    private EnemyController script;
-    private float width, height;
-    public float pauseTime;
+public class Enemy : MonoBehaviour
+{
+		public GameObject enemyController;
+		private float width, height;
+		public int scoreValue;
+		public float pauseTime;
+		public bool canFire;
+		public int fireProb; //int from 0-100 representing probability of firing when able
+		public GameObject enemy_shot;
+		public float shotOffset;
 
-	void Start () {
-        /*enemyController = GameObject.Find("enemyController");
-        width = GetComponent<BoxCollider>().size.x;
-        height = GetComponent<BoxCollider>().size.y;
-        script = enemyController.GetComponent<EnemyController>();*/
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        /*if (transform.position.x + width / 2 >= script.enemyMaxX || transform.position.x + width / 2 <= script.enemyMinX)
-        {
-            script.moveEnemiesDown();
-        }*/
-	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        GameObject g = other.gameObject;
-        if (g.name == "shot(Clone)")
-        {
-            Debug.Log("shot me!");
-            GetComponent<Animator>().SetBool("isShot", true);
-            StartCoroutine("pauseToDestroy");
-        }
+		void Start ()
+		{
+				scoreValue = 10;
+				//canFire = false;
+		}
 
-    }
-    
-    IEnumerator pauseToDestroy()
-    {
-        yield return new WaitForSeconds(pauseTime);
-        Destroy(gameObject);
-        
-    }
+		// Update is called once per frame
+		void Update ()
+		{
+				if (canFire) {
+						fire ();
+				}
+		}
+
+		void fire ()
+		{
+				GetComponent<SpriteRenderer> ().color = Color.red;
+
+				int x = Random.Range (0, 100);
+				//Debug.Log("rand: " + x);
+				if (x > (100 - fireProb)) {
+						Instantiate (enemy_shot, (transform.position + (Vector3.down * shotOffset)), Quaternion.identity);
+						//Debug.Break();
+				}
+		}
+
+		void OnTriggerEnter (Collider other)
+		{
+				GameObject g = other.gameObject;
+				if (g.name == "shot(Clone)") {
+						GetComponent<Animator> ().SetBool ("isShot", true);
+						Camera.main.GetComponent<camera> ().addToScore (scoreValue);
+						StartCoroutine ("pauseToDestroy");
+				}
+
+		}
+
+		IEnumerator pauseToDestroy ()
+		{
+				yield return new WaitForSeconds (pauseTime);
+				Destroy (gameObject);
+		}
 }
