@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     private float width, height;
     public int scoreValue;
     public float pauseTime;
-    public bool canFire;
     public int fireProb; //int from 0-100 representing probability of firing when able
     public GameObject enemy_shot;
     public float shotOffset;
@@ -16,7 +15,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         scoreValue = 10;
-        //canFire = false;
     }
 
     // Update is called once per frame
@@ -27,7 +25,6 @@ public class Enemy : MonoBehaviour
     public void fire()
     {
         Instantiate(enemy_shot, (transform.position + (Vector3.down * shotOffset)), Quaternion.identity);
-        //Debug.Break();
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,6 +33,7 @@ public class Enemy : MonoBehaviour
         if (g.name == "shot(Clone)")
         {
             GetComponent<Animator>().SetBool("isShot", true);
+            audio.Play();
             Camera.main.GetComponent<camera>().addToScore(scoreValue);
             StartCoroutine("pauseToDestroy");
         }

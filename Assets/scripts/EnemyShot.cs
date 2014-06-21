@@ -7,20 +7,20 @@ public class EnemyShot : MonoBehaviour
 
     void Update()
     {
-        float yViewPos = Camera.main.WorldToViewportPoint(transform.position).y;
+        /*float yViewPos = Camera.main.WorldToViewportPoint(transform.position).y;
         //Debug.Log("shotViewPos: " + yViewPos);
         if (yViewPos < 0.0f)
             Destroy(gameObject);
         else
-        {
+        {*/
             float distance = speed * Time.deltaTime;
             transform.Translate(Vector3.down * distance);
-        }
+       // }
 
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enemy shot collider fired");
+        Destroy(gameObject);
     }
 }

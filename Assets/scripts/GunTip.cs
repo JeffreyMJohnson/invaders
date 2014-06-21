@@ -11,7 +11,7 @@ public class GunTip : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				Debug.Log ("gunTip started");
+				//Debug.Log ("gunTip started");
 		}
 	
 		// Update is called once per frame
@@ -31,6 +31,7 @@ public class GunTip : MonoBehaviour
 				if (Input.GetButtonDown ("Fire1") && Time.time > nextFire) {
 						nextFire = Time.time + fireRate;
 						Instantiate (shotPrefab, transform.position, Quaternion.identity);
+                        audio.Play();
 				}
 		
 		}

@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     public float enemyMinX;
     public float movePauseTime;
     public float enemyFirePauseTime;
-
+    public float moveDistance;
 
     /*private int COLS = 12;
 private int ROWS = 5;*/
@@ -24,7 +24,6 @@ private int ROWS = 5;*/
     private int POSITION_X = 1;
     private float enemyWidth;
     private float enemyHeight;
-    private float moveDistance;
     private int direction;
     private float moveTimer;
     private bool moveDown;
@@ -40,7 +39,7 @@ private int ROWS = 5;*/
         enemyWidth = enemyCollider.size.x * alien1.localScale.x;
         enemyHeight = enemyCollider.size.y * alien1.localScale.y;
 
-        moveDistance = enemyWidth + xPadding;
+        //moveDistance = enemyWidth + xPadding;
         direction = 1;
         createEnemies();
         setCanFire();
@@ -74,6 +73,7 @@ private int ROWS = 5;*/
             {
                 enemy.GetComponent<Animator>().SetInteger("moveAnimation", moveAnimation);
                 enemy.transform.Translate(new Vector3(moveDistance * direction, 0.0f, 0.0f));
+                audio.Play();
                 //Debug.Log ("pos: " + enemy.transform.position.x);
                 if (NearlyEqual(enemy.transform.position.x, enemyMaxX, 0.0001f) || enemy.transform.position.x > enemyMaxX)
                 {
@@ -127,6 +127,7 @@ private int ROWS = 5;*/
             {
                 enemy.transform.Translate(new Vector3(0.0f, (enemyHeight + yPadding) * -1, 0.0f));
                 enemy.GetComponent<Animator>().SetInteger("moveAnimation", moveAnimation);
+                audio.Play();
             }
             direction *= -1;
             moveTimer = 0.0f;
@@ -314,7 +315,6 @@ private int ROWS = 5;*/
                 Debug.Break();
             else
             {
-                //enemyCol [min].GetComponent<Enemy> ().canFire = true;
                 enemyCol[min].GetComponent<SpriteRenderer>().color = Color.red;
                 enemiesCanFire[enemyIndex] = enemyCol[min];
                 enemyIndex++;

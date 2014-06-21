@@ -50,7 +50,23 @@ public class player : MonoBehaviour
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("player shot");
+            //Debug.Log("player shot");
+            die();
+        }
+
+        private void die()
+        {
             GetComponent<Animator>().SetTrigger("playerDie");
+            audio.Play();
+            camera cameraScript = Camera.main.GetComponent<camera>();
+            --cameraScript.playerLives;
+            if (cameraScript.playerLives == 0)
+            {   //gameover
+                Debug.Log("game over");
+
+            }
+            else{
+                Debug.Log(cameraScript.playerLives + " lives left");
+            }
         }
 }

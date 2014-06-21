@@ -15,7 +15,7 @@ public class Shield : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("shield trigger fired");
+        //Debug.Log("shield trigger fired");
         //Animator a = other.GetComponent<Animator>();
         //int damage = a.GetInteger("damage");
         if (damageLevel < 4)
