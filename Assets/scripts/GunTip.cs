@@ -5,20 +5,21 @@ public class GunTip : MonoBehaviour
 {
 		public float fireRate = .25f;
 		public GameObject shotPrefab;
+        public bool canFire;
 
 		private float nextFire = 0.0f;
 		
 		// Use this for initialization
 		void Start ()
 		{
-				//Debug.Log ("gunTip started");
+            canFire = true;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
             GameObject shot = GameObject.FindWithTag("shot");
-            if (shot == null)
+            if (canFire && shot == null)
             {
                 fire();
             }
