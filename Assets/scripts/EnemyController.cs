@@ -315,7 +315,7 @@ private int ROWS = 5;*/
                 Debug.Break();
             else
             {
-                enemyCol[min].GetComponent<SpriteRenderer>().color = Color.red;
+                //enemyCol[min].GetComponent<SpriteRenderer>().color = Color.red;
                 enemiesCanFire[enemyIndex] = enemyCol[min];
                 enemyIndex++;
             }
